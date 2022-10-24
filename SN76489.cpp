@@ -152,7 +152,7 @@ void SN76489::setAttenuation(uint8_t toneGenerator, uint8_t attn) {
 // _7	_6	_5	_4	_3	_2	_1	_0	<- Conventional data bus bits (D7=MSB on Left, D0=LSB on Right)
 // 1	R2	R1	R0	x	FB	NF1	NF0     Update noise source (single byte transfer)
 void SN76489::setNoise(uint8_t feedbackControl, uint8_t frequencyControl) {
-  SendByteToSoundChip(128 + controlRegister(3, false) + (feedbackControl==0 ? 0:4) + min(frequencyControl, 3));
+  SendByteToSoundChip(128 + controlRegister(3, true) + (feedbackControl==0 ? 0:4) + min(frequencyControl, 3));
 }
 
 // Private Methods /////////////////////////////////////////////////////////////
